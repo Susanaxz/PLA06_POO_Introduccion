@@ -57,7 +57,7 @@ class Empleado {
     }
 
     // creamos el metodo calcularSueldo sin implementar (se obliga a las clases hijas a implementarlo)
-    public function calcularSueldo () {
+    public function calcularSueldo (): float {
         return 0;
     }
 
