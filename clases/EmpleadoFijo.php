@@ -1,7 +1,10 @@
 <?php
 
+require_once ('traits/GuardarFichero.php');
+
 class EmpleadoFijo extends Empleado {
 
+    //trait GuardarFichero
     use GuardarFichero;
     const SUELDO_BASE = 1091.13;
     const COMPLEMENTO = 192.85;
@@ -44,8 +47,6 @@ class EmpleadoFijo extends Empleado {
         return $anyoActual - $this->anyoAlta;
     }
 
-    
-
     public function calcularSueldo(): float {
         $sueldo = self::SUELDO_BASE + self::COMPLEMENTO * ($this->calcularAntiguedad());
         return $sueldo;
@@ -64,10 +65,8 @@ class EmpleadoFijo extends Empleado {
         $datos = "Empleado fijo;" . $datosEmpleadoFijo;
 
         // Guardar los datos en el archivo
-        $this->guardarFichero($datos);
+        $this->guardar($datosEmpleadoFijo);
     }
-
-
 }
 
 ?>
