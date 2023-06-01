@@ -1,8 +1,9 @@
 <?php
 
 require_once('traits/GuardarFichero.php');
+require_once('clases/Empleado.php');
 
-class EmpleadoHoras extends Empleado {
+final class EmpleadoHoras extends Empleado {
 
     use GuardarFichero;
     const PRECIO_HORA = 9.39;
@@ -12,6 +13,7 @@ class EmpleadoHoras extends Empleado {
     public function __construct(string $nif, string $nombre, int $edad, string $departamento, int $horasTrabajadas) {
         parent::__construct($nif, $nombre, $edad, $departamento);
         $this->horasTrabajadas = $horasTrabajadas;
+        $this->altaEmpleado(); // Llamar a altaEmpleado() después de asignar los atributos
     }
 
     // atributo específico de la clase el nº de horas trabajadas con los metodos get y set
@@ -35,6 +37,11 @@ class EmpleadoHoras extends Empleado {
     public function calcularSueldo(): float {
         $sueldo = self::PRECIO_HORA * $this->horasTrabajadas;
         return $sueldo;
+    }
+
+    // Ampliar el método para añadir el nuevo atributo
+    public function datosEmpleadosCsv(): string {
+        return parent::datosEmpleadosCsv() . ';' . $this->horasTrabajadas;
     }
 
     private function altaEmpleado(): void {

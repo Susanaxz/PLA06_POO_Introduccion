@@ -1,8 +1,9 @@
 <?php
 
 require_once ('traits/GuardarFichero.php');
+require_once ('clases/Empleado.php');
 
-class EmpleadoFijo extends Empleado {
+final class EmpleadoFijo extends Empleado {
 
     //trait GuardarFichero
     use GuardarFichero;
