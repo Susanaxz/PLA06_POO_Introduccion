@@ -12,7 +12,10 @@ final class EmpleadoHoras extends Empleado {
 
     public function __construct(string $nif, string $nombre, int $edad, string $departamento, int $horasTrabajadas) {
         parent::__construct($nif, $nombre, $edad, $departamento);
-        $this->horasTrabajadas = $horasTrabajadas;
+        
+        //informar los valores a los atributos específicos de la clase Empleado  utilizando la delegación en los setters
+        $this->setHorasTrabajadas($horasTrabajadas);
+        
         $this->altaEmpleado(); // Llamar a altaEmpleado() después de asignar los atributos
     }
 

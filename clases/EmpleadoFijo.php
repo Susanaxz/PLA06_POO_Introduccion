@@ -16,7 +16,10 @@ final class EmpleadoFijo extends Empleado {
     
     public function __construct(string $nif, string $nombre, int $edad, string $departamento, int $anyoAlta) {
         parent::__construct($nif, $nombre, $edad, $departamento);
-        $this->anyoAlta = $anyoAlta;
+
+        //informar los valores a los atributos específicos de la clase Empleado  utilizando la delegación en los setters
+        $this->setAnyoAlta($anyoAlta);
+
         $this->altaEmpleado(); // Llamar a altaEmpleado() después de asignar los atributos
 
     }

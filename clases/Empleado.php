@@ -2,7 +2,7 @@
 
 // creacion de la superclase Empleado con los atributos y metodos que tienen en comun los empleados
 
-class Empleado {
+abstract class Empleado { // la clase es abstracta porque no se puede instanciar, solo se puede heredar
 
     private string $nif;
     private string $nombre;
@@ -11,36 +11,51 @@ class Empleado {
 
     // Al constructor le llegarán como parámetros los valores de los cuatro atributos comunes
     public function __construct(string $nif, string $nombre, int $edad, string $departamento) {
-        $this->nif = $nif;
-        $this->nombre = $nombre;
-        $this->edad = $edad;
-        $this->departamento = $departamento;
+        
+        // asignacion por delegacion de los valores de los atributos comunes
+        $this->setNif($nif);
+        $this->setNombre($nombre);
+        $this->setEdad($edad);
+        $this->setDepartamento($departamento);
     }
 
     // Al constructor le llegarán como parámetros los valores de los cuatro atributos comunes y utilizará los métodos SETTER para informarlos
-    public function setNif(string $nif):void {
+    public function setNif(string $nif) {
         if (!preg_match('/^[0-9]{8}[A-Z]$/', $nif)) {
             throw new Exception('El NIF no tiene el formato correcto, revisa que tenga un formato como este 12345678A');
         } 
         $this->nif = $nif;
     }
-    public function setNombre(string $nombre):void {
-                $this->nombre = $nombre;
+    public function setNombre($nombre) {
+            //validar nombre obligatorio
+            if (empty($nombre)) {
+                throw new Exception("Nombre obligatorio");
     }
+        $this->nombre = $nombre;
+    }   
+
     // edad
-    public function setEdad(int $edad):void {
+    public function setEdad(int $edad) {
+        if (empty($edad)) {
+            throw new Exception('La edad es obligatoria');
+        }
+
         if ($edad < 18 || $edad > 70) {
             throw new Exception('La edad debe estar entre 18 y 70');
         }
+        
         $this->edad = $edad;
     }
 
     // departamento
-    public function setDepartamento(string $departamento):void {
+    public function setDepartamento(string $departamento) {
+        if (empty($departamento)) {
+            throw new Exception('El departamento es obligatorio');
+        }
         $this->departamento = $departamento;
     }
 
-    //  Cremos los 4 métodos GETTER para recuperar los valores de los atributos
+    //  Creamos los 4 métodos GETTER para recuperar los valores de los atributos
     public function getNif():string {
         return $this->nif;
     }
@@ -57,9 +72,7 @@ class Empleado {
     }
 
     // creamos el metodo calcularSueldo sin implementar (se obliga a las clases hijas a implementarlo)
-    public function calcularSueldo (): float {
-        return 0;
-    }
+    public abstract function calcularSueldo (): float; // metodo abstracto que obliga a las clases hijas a implementarlo
 
     // Método que retorna los valores de los 4 atributos de la clase con el metodo getter. Este metodo utiliza la tecnica de delegacion
     public function mostrarDatos():string {

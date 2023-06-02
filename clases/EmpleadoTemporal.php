@@ -14,8 +14,12 @@ final class EmpleadoTemporal extends Empleado {
 
     public function __construct(string $nif, string $nombre, int $edad, string $departamento, DateTime $fechaAlta, DateTime $fechaBaja) {
         parent::__construct($nif, $nombre, $edad, $departamento);
+
+        // Informar los valores a los atributos específicos de la clase Empleado utilizando la delegación en los setters
         $this->setFechaAlta($fechaAlta);
         $this->setFechaBaja($fechaBaja);
+        
+
         $this->altaEmpleado(); // Llamar a altaEmpleado() después de asignar los atributos
     }   
 

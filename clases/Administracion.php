@@ -1,7 +1,4 @@
 <?php
-// Vamos a crear una clase genérica llamada administración con la finalidad de consultar el 
-// contenido del fichero personas.csv y obtener un array que utilizaremos para construir una
-// tabla html con todas las personas que hemos instanciado
 
 final class Administracion {
     
