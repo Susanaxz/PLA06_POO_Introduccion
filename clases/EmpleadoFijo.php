@@ -71,6 +71,8 @@ final class EmpleadoFijo extends Empleado {
         // Guardar los datos en el archivo
         $this->guardar($datosEmpleadoFijo);
     }
+
+	
 }
 
 ?>

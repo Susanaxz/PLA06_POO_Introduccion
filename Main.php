@@ -15,10 +15,10 @@
 	use clases\EmpleadoTemporal;
 
 	
-	//instanciar un emleado de cada clase
-	$empleados[] = new EmpleadoFijo('38721459H', 'Juan', 35, 'Administración', 2019);
-	$empleados[] = new EmpleadoHoras('46775821B', 'Marisa', 35, 'Producción', 300);
-	$empleados[] = new EmpleadoTemporal('39857436J', 'Sara', 35, 'Oficina Técnica', 10/05/2015, 07/03/2022);
+	// //instanciar un emleado de cada clase
+	// $empleados[] = new EmpleadoFijo('38721459H', 'Juan', 35, 'Administración', 2019);
+	// $empleados[] = new EmpleadoHoras('46775821B', 'Marisa', 35, 'Producción', 300);
+	// $empleados[] = new EmpleadoTemporal('39857436J', 'Sara', 35, 'Oficina Técnica', 10/05/2015, 07/03/2022);
 
 
 	//consulta de todos los empleados
