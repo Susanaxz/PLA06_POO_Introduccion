@@ -47,6 +47,15 @@ final class EmpleadoHoras extends Empleado {
         return parent::datosEmpleadosCsv() . ';' . $this->horasTrabajadas;
     }
 
+    public function mostrarDatos(): string {
+        if (empty($this->horasTrabajadas)) {
+            throw new Exception('El nº de horas trabajadas es obligatorio');
+        }
+        $datos = parent::mostrarDatos();
+        $datos .= "<br><strong>Nº de horas trabajadas:</strong> " . $this->getHorasTrabajadas() . " horas";
+        return $datos;
+    }
+
     private function altaEmpleado(): void {
         // Obtener los datos comunes en formato csv
         $datosComunes = parent::datosEmpleadosCsv(); // Obtener los datos comunes en formato csv desde la clase padre

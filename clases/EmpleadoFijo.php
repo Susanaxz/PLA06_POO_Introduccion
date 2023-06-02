@@ -51,6 +51,16 @@ final class EmpleadoFijo extends Empleado {
         return $anyoActual - $this->anyoAlta;
     }
 
+    public function mostrarDatos():string {
+        if (empty($this->anyoAlta)) {
+            throw new Exception('El año de alta es obligatorio');
+        }
+        $datos = parent::mostrarDatos();
+        $datos .= "<br><strong>Año de alta:</strong> " . $this->getAnyoAlta();
+        $datos .= "<br><strong>Antigüedad:</strong> " . $this->calcularAntiguedad();
+        return $datos;
+    }
+
     public function calcularSueldo(): float {
         $sueldo = self::SUELDO_BASE + self::COMPLEMENTO * ($this->calcularAntiguedad());
         return $sueldo;

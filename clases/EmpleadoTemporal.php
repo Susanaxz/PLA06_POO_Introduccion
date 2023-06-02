@@ -51,6 +51,20 @@ final class EmpleadoTemporal extends Empleado {
         return $antiguedad->y;
     }
 
+    public function mostrarDatos(): string {
+        if (empty($this->fechaAlta)) {
+            throw new Exception('La fecha de alta es obligatoria');
+        }
+        if (empty($this->fechaBaja)) {
+            throw new Exception('La fecha de baja es obligatoria');
+        }
+        $datos = parent::mostrarDatos();
+        $datos .= "<br><strong>Fecha de alta:</strong>  " . $this->getFechaAlta()->format('d/m/Y');
+        $datos .= "<br><strong>Fecha de baja:</strong>  " . $this->getFechaBaja()->format('d/m/Y');
+        $datos .= "<br><strong>Antigüedad:</strong>  " . $this->calcularAntiguedad() . " años";
+        return $datos;
+    }
+
     public function calcularSueldo(): float {
         $sueldo = self::SALARIO_FIJO;
         return $sueldo;
