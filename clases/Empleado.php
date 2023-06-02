@@ -21,6 +21,9 @@ abstract class Empleado { // la clase es abstracta porque no se puede instanciar
 
     // Al constructor le llegarán como parámetros los valores de los cuatro atributos comunes y utilizará los métodos SETTER para informarlos
     public function setNif(string $nif) {
+        if (empty($nif)) {
+            throw new Exception('El NIF es obligatorio');
+        }
         if (!preg_match('/^[0-9]{8}[A-Z]$/', $nif)) {
             throw new Exception('El NIF no tiene el formato correcto, revisa que tenga un formato como este 12345678A');
         } 
@@ -76,7 +79,7 @@ abstract class Empleado { // la clase es abstracta porque no se puede instanciar
 
     // Método que retorna los valores de los 4 atributos de la clase con el metodo getter. Este metodo utiliza la tecnica de delegacion
     public function mostrarDatos():string {
-        return "NIF: " . $this->getNif() . ", Nombre: " . $this->getNombre() . ", Edad: " . $this->getEdad() . ", Departamento: " . $this->getDepartamento();
+        return "<strong>NIF:</strong>  " . $this->getNif() . " / <strong>Nombre:</strong> " . $this->getNombre() . " / <strong>Edad:</strong>  " . $this->getEdad() . " / <strong>Departamento:</strong>  " . $this->getDepartamento();
     }
 
     // Método que retorna los valores de los 4 atributos pero en CSV
